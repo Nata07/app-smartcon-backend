@@ -25,6 +25,7 @@ jobs:
       - name: Run build
         run: yarn build
       
+      #COPIAR PASTA DIST PARA DENTRO DA DIGITALOCEAN
       - name: Copy dist to DigitalOcean
         uses: appleboy/scp-action@master
         with:
@@ -32,12 +33,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "."
+          source: ".,!node_modules"
           target: "~/app/app-smartcon-backend"
-      
-      
-      #SUBSTITUIR O CODIGO EXISTENTE DA PASTA EXISTENTE PELO NOVO CODIGO
-      #COPIAR PASTA DIST PARA DENTRO DA DIGITALOCEAN
+    
       #ENTRAR NA DIGITALOCEAN E EXECUTAR YARN
       #eXCUTAR MIGRATIONS DO TYPEORM
 
