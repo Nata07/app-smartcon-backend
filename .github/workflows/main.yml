@@ -58,7 +58,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/app/app-smartcon-backend
-            ./node_modules/.bin/typeorm migrate:run
+            ./node_modules/.bin/typeorm migration:run
       
       #
       - name: Restart api on Digital Ocean
