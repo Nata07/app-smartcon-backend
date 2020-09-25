@@ -35,6 +35,41 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".,!node_modules"
           target: "~/app/app-smartcon-backend"
+      
+      #
+      - name: Install dependencies on digital ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/app/app-smartcon-backend
+            yarn
+      
+      #
+      - name: Run migration on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/app/app-smartcon-backend
+            ./node_modules/.bin/typeorm migrate:run
+      
+      #
+      - name: Restart api on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            pm2 restart smartcon-api
     
       #ENTRAR NA DIGITALOCEAN E EXECUTAR YARN
       #eXCUTAR MIGRATIONS DO TYPEORM
