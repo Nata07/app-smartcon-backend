@@ -32,8 +32,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "dist"
-          target: "test"
+          source: "."
+          target: "~/app/app-smartcon-backend"
       
       
       #SUBSTITUIR O CODIGO EXISTENTE DA PASTA EXISTENTE PELO NOVO CODIGO
