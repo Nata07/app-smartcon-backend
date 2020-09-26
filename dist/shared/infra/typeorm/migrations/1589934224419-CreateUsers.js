@@ -30,9 +30,6 @@ class CreateUsers1589934224419 {
         type: 'varchar',
         isUnique: false
       }, {
-        name: 'type',
-        type: 'varchar'
-      }, {
         name: 'password',
         type: 'varchar'
       }, {

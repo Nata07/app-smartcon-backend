@@ -9,12 +9,11 @@ interface IRequest {
   name: string;
   email: string;
   phone: string;
-  type: 'admin' | 'provider' | 'user';
   password: string;
 }
 
 @injectable()
-class CreateuserService {
+class CreateUserService {
   constructor(
     @inject('UsersRepository')
     private userRepository: IUsersRepository,
@@ -29,7 +28,7 @@ class CreateuserService {
     name,
     email,
     phone,
-    type,
+    // type,
     password,
   }: IRequest): Promise<User> {
     const duplicatedEmail = await this.userRepository.findByEmail(email);
@@ -46,7 +45,6 @@ class CreateuserService {
       name,
       email,
       phone,
-      type,
       password: hashedPassword,
     });
 
@@ -56,4 +54,4 @@ class CreateuserService {
   }
 }
 
-export default CreateuserService;
+export default CreateUserService;

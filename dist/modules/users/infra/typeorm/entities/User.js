@@ -11,7 +11,7 @@ var _classTransformer = require("class-transformer");
 
 var _upload = _interopRequireDefault(require("../../../../../config/upload"));
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _temp;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,9 +21,9 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)('uuid'), _dec3 = Reflect.metadata("design:type", String), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", String), _dec12 = (0, _typeorm.Column)(), _dec13 = (0, _classTransformer.Exclude)(), _dec14 = Reflect.metadata("design:type", String), _dec15 = (0, _typeorm.Column)(), _dec16 = Reflect.metadata("design:type", String), _dec17 = (0, _typeorm.CreateDateColumn)(), _dec18 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec19 = (0, _typeorm.UpdateDateColumn)(), _dec20 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec21 = (0, _classTransformer.Expose)({
+let User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)('uuid'), _dec3 = Reflect.metadata("design:type", String), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = (0, _classTransformer.Exclude)(), _dec12 = Reflect.metadata("design:type", String), _dec13 = (0, _typeorm.Column)(), _dec14 = Reflect.metadata("design:type", String), _dec15 = (0, _typeorm.CreateDateColumn)(), _dec16 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec17 = (0, _typeorm.UpdateDateColumn)(), _dec18 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec19 = (0, _classTransformer.Expose)({
   name: 'avatar_url'
-}), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec(_class = (_class2 = (_temp = class User {
+}), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec(_class = (_class2 = (_temp = class User {
   constructor() {
     _initializerDefineProperty(this, "id", _descriptor, this);
 
@@ -33,15 +33,13 @@ let User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
 
     _initializerDefineProperty(this, "phone", _descriptor4, this);
 
-    _initializerDefineProperty(this, "type", _descriptor5, this);
+    _initializerDefineProperty(this, "password", _descriptor5, this);
 
-    _initializerDefineProperty(this, "password", _descriptor6, this);
+    _initializerDefineProperty(this, "avatar", _descriptor6, this);
 
-    _initializerDefineProperty(this, "avatar", _descriptor7, this);
+    _initializerDefineProperty(this, "created_at", _descriptor7, this);
 
-    _initializerDefineProperty(this, "created_at", _descriptor8, this);
-
-    _initializerDefineProperty(this, "updated_at", _descriptor9, this);
+    _initializerDefineProperty(this, "updated_at", _descriptor8, this);
   }
 
   getAvatarUrl() {
@@ -78,32 +76,27 @@ let User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "type", [_dec10, _dec11], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "password", [_dec10, _dec11, _dec12], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "password", [_dec12, _dec13, _dec14], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "avatar", [_dec13, _dec14], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "avatar", [_dec15, _dec16], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "created_at", [_dec15, _dec16], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "created_at", [_dec17, _dec18], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "updated_at", [_dec17, _dec18], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "updated_at", [_dec19, _dec20], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "getAvatarUrl", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "getAvatarUrl"), _class2.prototype)), _class2)) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "getAvatarUrl", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "getAvatarUrl"), _class2.prototype)), _class2)) || _class);
 var _default = User; // case 's3':
 //   return `${uploadConfig.config.aws.bucket}.s3.amazonaws.com/files/${this.avatar}`;
 

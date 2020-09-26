@@ -24,9 +24,7 @@ class FakeUsersRepository implements IUsersRepository {
     let { users } = this;
 
     if (except_user_id) {
-      users = this.users.filter(
-        user => user.id !== except_user_id && user.type === 'provider',
-      );
+      users = this.users.filter(user => user.id !== except_user_id);
     }
 
     return users;

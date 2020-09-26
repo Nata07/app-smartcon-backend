@@ -28,11 +28,11 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
-    if (user.type == 'user') {
-      throw new AppError(
-        'Sistema web é apenas para prestadores de serviço. Baixe nosso app na sua loja de aplicativos.',
-      );
-    }
+    // if (user.type == 'user') {
+    //   throw new AppError(
+    //     'Sistema web é apenas para prestadores de serviço. Baixe nosso app na sua loja de aplicativos.',
+    //   );
+    // }
 
     const passwordMatched = await this.hashProvider.compareHash(
       password,

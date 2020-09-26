@@ -39,11 +39,12 @@ let AuthenticateUserService = (_dec = (0, _tsyringe.injectable)(), _dec2 = funct
 
     if (!user) {
       throw new _AppError.default('Incorrect email/password combination.', 401);
-    }
+    } // if (user.type == 'user') {
+    //   throw new AppError(
+    //     'Sistema web é apenas para prestadores de serviço. Baixe nosso app na sua loja de aplicativos.',
+    //   );
+    // }
 
-    if (user.type == 'user') {
-      throw new _AppError.default('Sistema web é apenas para prestadores de serviço. Baixe nosso app na sua loja de aplicativos.');
-    }
 
     const passwordMatched = await this.hashProvider.compareHash(password, user.password);
 

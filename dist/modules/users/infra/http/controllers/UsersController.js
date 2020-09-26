@@ -19,7 +19,6 @@ class UsersController {
       name,
       email,
       phone,
-      type,
       password
     } = request.body;
 
@@ -29,10 +28,9 @@ class UsersController {
       name,
       email,
       phone,
-      type,
       password
-    });
-    delete user.password;
+    }); // delete user.password;
+
     return response.json((0, _classTransformer.classToClass)(user));
   }
 

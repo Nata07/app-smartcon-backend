@@ -30,7 +30,6 @@ usersRouter.post('/', (0, _celebrate.celebrate)({
     name: _celebrate.Joi.string().required(),
     email: _celebrate.Joi.string().email().required(),
     phone: _celebrate.Joi.string().required(),
-    type: _celebrate.Joi.string().required(),
     password: _celebrate.Joi.string().required()
   }
 }), usersController.create);
