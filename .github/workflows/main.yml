@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with: 
+          node-version: 12.x
+          
+      #instalar as dependencias NPM/YARN
+      - name: Install dependencies
+        run: yarn 
+      
+      #EXCUTAR BUILD
+      - name: Run build
+        run: yarn build
+      
+      #COPIAR PASTA DIST PARA DENTRO DA DIGITALOCEAN
+      - name: Copy dist to DigitalOcean
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: ".,!node_modules"
+          target: "~/app/app-smartcon-backend"
+      
+      #
+      - name: Install dependencies on digital ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/app/app-smartcon-backend
+            yarn
+      
+      #
+      - name: Run migration on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/app/app-smartcon-backend
+            ./node_modules/.bin/typeorm migration:run
+      
+      #
+      - name: Restart api on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            pm2 restart smartcon-api
+    
+      #ENTRAR NA DIGITALOCEAN E EXECUTAR YARN
+      #eXCUTAR MIGRATIONS DO TYPEORM
+
+      # RESTART NODE SERVER
+  
