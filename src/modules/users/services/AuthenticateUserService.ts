@@ -28,11 +28,11 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
-    // if (user.type == 'user') {
-    //   throw new AppError(
-    //     'Sistema web é apenas para prestadores de serviço. Baixe nosso app na sua loja de aplicativos.',
-    //   );
-    // }
+    if (user.permission === 'USER') {
+      throw new AppError(
+        'Não foi possivel abrir o painel do usuário. Pedimos a sua compreensão e tente mais tarde.',
+      );
+    }
 
     const passwordMatched = await this.hashProvider.compareHash(
       password,
@@ -44,9 +44,9 @@ class AuthenticateUserService {
     }
 
     const { secret, expiresIn } = authConfig.jwt;
-
+    const { permission } = user;
     // podemos colocar permissoes do usuarios
-    const token = sign({}, secret, {
+    const token = sign({ permission }, secret, {
       subject: user.id,
       expiresIn,
     });

@@ -28,6 +28,9 @@ class User {
   password: string;
 
   @Column()
+  permission: string;
+
+  @Column()
   avatar: string;
 
   @CreateDateColumn()

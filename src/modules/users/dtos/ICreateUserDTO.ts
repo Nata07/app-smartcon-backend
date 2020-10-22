@@ -3,4 +3,5 @@ export default interface ICreateUserDTO {
   email: string;
   phone: string;
   password: string;
+  permission: 'ADMIN' | 'PROVIDER' | 'USER';
 }

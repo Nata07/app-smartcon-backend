@@ -43,7 +43,7 @@ class SendForgotPassowordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[GoBarber] - Recuperaração de senha',
+      subject: '[Smartcon] - Recuperaração de senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {

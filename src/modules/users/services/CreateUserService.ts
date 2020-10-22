@@ -10,6 +10,7 @@ interface IRequest {
   email: string;
   phone: string;
   password: string;
+  permission: 'ADMIN' | 'PROVIDER' | 'USER';
 }
 
 @injectable()
@@ -28,8 +29,8 @@ class CreateUserService {
     name,
     email,
     phone,
-    // type,
     password,
+    permission,
   }: IRequest): Promise<User> {
     const duplicatedEmail = await this.userRepository.findByEmail(email);
 
@@ -46,6 +47,7 @@ class CreateUserService {
       email,
       phone,
       password: hashedPassword,
+      permission,
     });
 
     await this.cacheRepository.invalidadePrefix('providers-list');

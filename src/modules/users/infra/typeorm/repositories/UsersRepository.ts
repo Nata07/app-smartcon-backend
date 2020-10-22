@@ -39,7 +39,9 @@ class UsersRepository implements IUsersRepository {
         },
       });
     } else {
-      users = await this.ormRepository.find();
+      users = await this.ormRepository.find({
+        where: [{ permission: 'PROVIDER' }],
+      });
     }
 
     return users;
