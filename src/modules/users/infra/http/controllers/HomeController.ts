@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import ListProviderService from '@modules/appointments/services/ListProviderService';
-import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
+import { container } from 'tsyringe';
 
 export default class HomeController {
   public async show(request: Request, response: Response): Promise<Response> {
