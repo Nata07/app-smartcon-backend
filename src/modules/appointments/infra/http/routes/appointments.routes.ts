@@ -7,18 +7,23 @@ import ProviderAppointmentsController from '../controllers/ProviderAppointmentsC
 const appointmentsRouter = Router();
 const appointmentsController = new AppointmentsController();
 const appointmentsProvider = new ProviderAppointmentsController();
-appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().required(),
+      phone: Joi.string().required(),
+      permission: Joi.string().required(),
       provider_id: Joi.string().uuid().required(),
       date: Joi.date(),
     },
   }),
   appointmentsController.create,
 );
+
+appointmentsRouter.use(ensureAuthenticated);
 appointmentsRouter.get('/me', appointmentsProvider.index);
 
 export default appointmentsRouter;
