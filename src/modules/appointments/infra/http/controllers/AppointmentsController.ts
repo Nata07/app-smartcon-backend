@@ -20,8 +20,6 @@ export default class AppointmentsController {
       permission,
     });
 
-    console.log(user);
-
     const user_id = user.id;
 
     const appointment = await createAppointment.excecute({
@@ -29,8 +27,6 @@ export default class AppointmentsController {
       date,
       user_id,
     });
-
-    console.log(appointment);
 
     return response.json(appointment);
   }
