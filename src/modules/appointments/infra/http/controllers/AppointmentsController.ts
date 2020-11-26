@@ -6,18 +6,18 @@ import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepo
 
 export default class AppointmentsController {
   public async create(request: Request, response: Response): Promise<Response> {
+    const userRepository = new UsersRepository();
     const createUser = container.resolve(CreateUserService);
     const createAppointment = container.resolve(CreateAppointmentService);
-    const userRepository = new UsersRepository();
 
-    let userId = '';
+    let user_id = '';
     const { provider_id, date, name, email, phone, permission } = request.body;
 
     const password = 'smartcon2020';
     const userExist = await userRepository.findByEmail(email);
 
     if (userExist) {
-      userId = userExist.id;
+      user_id = userExist.id;
     } else {
       const user = await createUser.execute({
         name,
@@ -27,13 +27,13 @@ export default class AppointmentsController {
         permission,
       });
 
-      userId = user.id;
+      user_id = user.id;
     }
 
     const appointment = await createAppointment.excecute({
       date,
       provider_id,
-      user_id: userId,
+      user_id,
     });
 
     return response.json(appointment);

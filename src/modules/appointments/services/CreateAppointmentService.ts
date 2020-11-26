@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
-import { startOfHour, isBefore, getHours, format } from 'date-fns';
+import { isBefore, getHours, format } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import INotificationsRepository from '@modules/notfications/repositories/INotificationsRepository';
