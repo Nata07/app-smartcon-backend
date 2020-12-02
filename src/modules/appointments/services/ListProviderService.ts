@@ -17,14 +17,16 @@ class ListProviderService {
   ) {}
 
   public async execute({ user_id }: IRequest): Promise<User[]> {
+    let users: User[] = [];
     // const users = await this.usersRespository.findAllProviders({
     //   except_user_id: user_id,
     // });
-    let users = await this.cacheRepository.recover<User[]>(
-      `providers-list:${user_id}`,
-    );
 
-    if (!users) {
+    // let users = await this.cacheRepository.recover<User[]>(
+    //   `providers-list:${user_id}`,
+    // );
+
+    if (!users || users.length === 0) {
       users = await this.usersRespository.findAllProviders({
         except_user_id: user_id,
       });

@@ -34,7 +34,7 @@ class CreateAppointmentService {
   }: IRequest): Promise<Appointment> {
     // const appointmentDate = startOfHour(date);
     const appointmentDate = date;
-    console.log(appointmentDate);
+
     if (isBefore(appointmentDate, Date.now())) {
       throw new AppError('You cant create appointment on past date');
     }
@@ -42,8 +42,6 @@ class CreateAppointmentService {
       appointmentDate,
       provider_id,
     );
-
-    console.log(`findAppointmentsInSameDate: => ${findAppointmentsInSameDate}`);
 
     if (user_id === provider_id) {
       throw new AppError('You not create appointment from you');
@@ -65,21 +63,19 @@ class CreateAppointmentService {
       user_id,
     });
 
-    // const dateFormated = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
+    const dateFormated = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
 
-    // await this.notificationRepository.create({
-    //   recipient_id: provider_id,
-    //   content: `Você possui um novo agendamento para o dia ${dateFormated}`,
-    // });
+    await this.notificationRepository.create({
+      recipient_id: provider_id,
+      content: `Você possui um novo agendamento para o dia ${dateFormated}`,
+    });
 
-    // await this.cacheProvider.invalidate(
-    //   `providers-appointment:${provider_id}:${format(
-    //     appointmentDate,
-    //     'yyyy-M-d',
-    //   )}`,
-    // );
-    console.log(`appointment service =>>>>>${appointment}`);
-
+    await this.cacheProvider.invalidate(
+      `providers-appointment:${provider_id}:${format(
+        appointmentDate,
+        'yyyy-M-d',
+      )}`,
+    );
     return appointment;
   }
 }

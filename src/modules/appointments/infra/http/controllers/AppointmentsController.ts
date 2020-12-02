@@ -18,7 +18,6 @@ export default class AppointmentsController {
 
     if (userExist) {
       user_id = userExist.id;
-      console.log(user_id);
     } else {
       const user = await createUser.execute({
         name,
@@ -36,7 +35,7 @@ export default class AppointmentsController {
       provider_id,
       user_id,
     });
-    console.log(appointment);
+
     return response.json(appointment);
   }
 }
