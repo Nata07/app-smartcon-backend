@@ -24,6 +24,9 @@ class User {
   phone: string;
 
   @Column()
+  occupation: string;
+
+  @Column()
   @Exclude()
   password: string;
 

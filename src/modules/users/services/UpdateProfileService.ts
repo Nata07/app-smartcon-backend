@@ -8,6 +8,8 @@ interface IRequest {
   user_id: string;
   name: string;
   email: string;
+  phone: string;
+  occupation: string;
   password?: string;
   old_password: string;
 }
@@ -22,6 +24,8 @@ class UpdateProfileService {
   public async execute({
     name,
     email,
+    phone,
+    occupation,
     user_id,
     password,
     old_password,
@@ -35,11 +39,13 @@ class UpdateProfileService {
     const userExists = await this.usersRespository.findByEmail(email);
 
     if (userExists && userExists.id !== user.id) {
-      throw new AppError('User already exists.');
+      throw new AppError('User different logged.');
     }
 
     user.name = name;
-    user.email = email;
+    // user.email = email;
+    user.phone = phone;
+    user.occupation = occupation;
 
     if (password && !old_password) {
       throw new AppError(

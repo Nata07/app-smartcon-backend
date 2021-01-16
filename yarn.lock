@@ -1469,12 +1469,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/cors@^2.8.6":
-  version "2.8.6"
-  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.6.tgz#cfaab33c49c15b1ded32f235111ce9123009bd02"
-  integrity sha512-invOmosX0DqbpA+cE2yoHGUlF/blyf7nB0OGYBBiH27crcVm5NmFaZkLP4Ta1hGaesckCi5lVLlydNJCxkTOSg==
-  dependencies:
-    "@types/express" "*"
+"@types/cors@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.9.tgz#4bd1fcac72eca8d5bec93e76c7fdcbdc1bc2cd4a"
+  integrity sha512-zurD1ibz21BRlAOIKP8yhrxlqKx6L9VCwkB5kMiP6nZAhoF5MvC7qS1qPA7nRcr1GJolfkQC7/EAL4hdYejLtg==
 
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
@@ -2272,6 +2270,14 @@ celebrate@^12.1.1:
   dependencies:
     "@hapi/joi" "17.x.x"
     escape-html "1.0.3"
+
+cep-promise@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/cep-promise/-/cep-promise-4.0.3.tgz#323e2f07c63a6b68834ffa94ed9ba5089786d9aa"
+  integrity sha512-MIqB5NLe4sgmMPE4DL/s9EXIJJah58HGBAneeGuQ9i0arhGQqBhXDk4l3+ohy4AdyIxhWvnowIWEsxqyoQNX5g==
+  dependencies:
+    node-fetch "2.6.1"
+    unfetch "4.1.0"
 
 chalk@^1.1.1:
   version "1.1.3"
@@ -5129,6 +5135,11 @@ node-environment-flags@^1.0.5:
     object.getownpropertydescriptors "^2.0.3"
     semver "^5.7.0"
 
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -7033,6 +7044,11 @@ uglify-js@^3.1.4:
   integrity sha512-8RZBJq5smLOa7KslsNsVcSH+KOXf1uDU8yqLeNuVKwmT0T3FA0ZoXlinQfRad7SDcbZZRZE4ov+2v71EnxNyCA==
   dependencies:
     commander "~2.20.3"
+
+unfetch@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.1.0.tgz#6ec2dd0de887e58a4dee83a050ded80ffc4137db"
+  integrity sha512-crP/n3eAPUJxZXM9T80/yv0YhkTEx2K1D3h7D1AJM6fzsWZrxdyRuLN0JH/dkZh1LNH8LxCnBzoPFCPbb2iGpg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
