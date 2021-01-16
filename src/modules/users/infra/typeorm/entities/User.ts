@@ -27,6 +27,12 @@ class User {
   occupation: string;
 
   @Column()
+  register: string;
+
+  @Column()
+  about: string;
+
+  @Column()
   @Exclude()
   password: string;
 

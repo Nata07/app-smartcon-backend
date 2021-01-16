@@ -10,6 +10,7 @@ interface IRequest {
   email: string;
   phone: string;
   occupation: string;
+  register: string;
   password?: string;
   old_password: string;
 }
@@ -26,6 +27,7 @@ class UpdateProfileService {
     email,
     phone,
     occupation,
+    register,
     user_id,
     password,
     old_password,
@@ -46,6 +48,7 @@ class UpdateProfileService {
     // user.email = email;
     user.phone = phone;
     user.occupation = occupation;
+    user.register = register;
 
     if (password && !old_password) {
       throw new AppError(

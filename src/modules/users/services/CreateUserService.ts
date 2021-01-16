@@ -9,6 +9,7 @@ interface IRequest {
   name: string;
   email: string;
   phone: string;
+  register: string;
   password: string;
   permission: 'ADMIN' | 'PROVIDER' | 'USER';
 }
@@ -29,6 +30,7 @@ class CreateUserService {
     name,
     email,
     phone,
+    register,
     password,
     permission,
   }: IRequest): Promise<User> {
@@ -46,6 +48,7 @@ class CreateUserService {
       name,
       email,
       phone,
+      register,
       password: hashedPassword,
       permission,
     });
