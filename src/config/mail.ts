@@ -1,5 +1,5 @@
 interface IMailConfig {
-  driver: 'ethereal' | 'ses';
+  driver: 'ethereal' | 'ses' | 'zoho';
 
   defaults: {
     from: {
@@ -14,7 +14,7 @@ export default {
   // configurar email no SES
   defaults: {
     from: {
-      email: 'equipe@smartcon.com.br',
+      email: 'contato@smartcon.app',
       name: 'Equipe SmartCon',
     },
   },
