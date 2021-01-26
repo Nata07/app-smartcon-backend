@@ -3,7 +3,6 @@ import IMailProvider from '@shared/container/providers/MailProvider/models/IMail
 import path from 'path';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IUserTokenRepository from '@modules/users/repositories/IUserTokenRepository';
 
 interface IRequest {
   provider_email: string;
@@ -20,9 +19,6 @@ class SendSchedulingAppointmentEmailService {
 
     @inject('MailProvider')
     private mailProvider: IMailProvider,
-
-    @inject('UserTokensRepository')
-    private userTokenRepository: IUserTokenRepository,
   ) {}
 
   public async execute({
@@ -36,8 +32,6 @@ class SendSchedulingAppointmentEmailService {
     if (!user) {
       throw new AppError('User does not exists');
     }
-
-    // const { token } = await this.userTokenRepository.generate(user.id);
 
     const schedulingAppointmentTemplate = path.resolve(
       __dirname,

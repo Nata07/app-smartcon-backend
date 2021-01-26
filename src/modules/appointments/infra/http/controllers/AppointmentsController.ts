@@ -6,19 +6,20 @@ import CreateAppointmentService from '@modules/appointments/services/CreateAppoi
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import { format } from 'date-fns';
 import SendSchedulingAppointmentEmailService from '@modules/appointments/services/SendSchedulingAppointmentEmailService';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 export default class AppointmentsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const userRepository = new UsersRepository();
     const createUser = container.resolve(CreateUserService);
     const createAppointment = container.resolve(CreateAppointmentService);
+    let user = new User();
 
     const sendSchedulingAppointment = container.resolve(
       SendSchedulingAppointmentEmailService,
     );
 
     let user_id = '';
-    let user;
     const { provider_id, date, name, email, phone, permission } = request.body;
     const provider = await userRepository.findById(provider_id);
 
@@ -26,10 +27,16 @@ export default class AppointmentsController {
     const userExist = await userRepository.findByEmail(email);
 
     if (provider === undefined) {
-      return AppError('Provider does not exist!');
+      throw new AppError('Provider does not exist!');
     }
     if (userExist) {
       user_id = userExist.id;
+
+      userExist.name = name;
+      userExist.email = email;
+      userExist.phone = phone;
+
+      userRepository.save(userExist);
     } else {
       user = await createUser.execute({
         name,
@@ -48,8 +55,10 @@ export default class AppointmentsController {
       provider_id,
       user_id,
     });
+    console.log(appointment);
 
     const dateFormated = format(appointment.date, "dd/MM/yyyy 'às' HH:mm'h'");
+    console.log(dateFormated);
 
     await sendSchedulingAppointment.execute({
       provider_email: provider.email,
