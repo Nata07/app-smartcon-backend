@@ -55,17 +55,15 @@ export default class AppointmentsController {
       provider_id,
       user_id,
     });
-    console.log(appointment);
 
     const dateFormated = format(appointment.date, "dd/MM/yyyy 'às' HH:mm'h'");
-    console.log(dateFormated);
 
-    await sendSchedulingAppointment.execute({
-      provider_email: provider.email,
-      provider_name: provider.name,
-      user_email: userExist?.email ? userExist?.email : user?.email,
-      date_appointment: dateFormated,
-    });
+    // await sendSchedulingAppointment.execute({
+    //   provider_email: provider.email,
+    //   provider_name: provider.name,
+    //   user_email: userExist?.email ? userExist?.email : user?.email,
+    //   date_appointment: dateFormated,
+    // });
 
     return response.json(appointment);
   }
