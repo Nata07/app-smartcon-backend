@@ -15,7 +15,7 @@ export default {
   defaults: {
     from: {
       email: 'contato@smartcon.app',
-      name: 'Equipe SmartCon',
+      name: 'Plataforma | Smartcon',
     },
   },
 } as IMailConfig;

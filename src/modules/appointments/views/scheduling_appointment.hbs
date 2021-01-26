@@ -3,7 +3,6 @@
     width: 100%;
     max-width: 680px;
     border-radius: 5px;
-    background: rgb(32, 32, 36);
     padding: 50px;
   }
 
@@ -40,18 +39,21 @@
 
 <div class="container">
   <div class="main">
-    <p>Olá Dr. <strong>{{name}}</strong></p>
-    <p>Uma solicitação de recuperação de senha foi realizada para sua conta ({{email}}) na Smartcon.
-      Se você não foi o autor, apenas descarte esse e-mail.</p>
-    <p>Para continuar com a recuperação de senha clique no botão abaixo para criar uma nova senha.
-      Ah, esse link expira em 48h.</p>
+    <p>Boa tarde. </p>
+    <p>Há uma nova solicitação de agendamento para o Dr.
+      <strong>{{doctor_name}}</strong> ({{doctor_email}}) na plataforma Smartcon.
+    </p>
+
+    <p>Quem solicitou a consulta foi o usuário: <br>
+      Nome: <strong>{{user_name}}</strong> <br>
+      Email: <strong>{{user_email}}</strong> <br>
+      Telefone: <strong>{{user_phone}}</strong> <br>
+      Data do agendamento: <strong>{{date_appointment}}</strong>
+    </p>
 
     <p>
       Atenciosamente! <br>
       Equipe Smartcon
     </p>
-  </div>
-  <div class="button">
-    <a href="{{link}}">Criar nova senha</a>
   </div>
 </div>

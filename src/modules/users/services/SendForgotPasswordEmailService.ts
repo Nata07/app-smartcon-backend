@@ -43,11 +43,12 @@ class SendForgotPassowordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[Smartcon] - Recuperaração de senha',
+      subject: 'Hora de recuperar senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
+          email: user.email,
           link: `${process.env.APP_WEB_URL}/reset-password?token=${token}`,
         },
       },
