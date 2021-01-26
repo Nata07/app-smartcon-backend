@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
-import { isBefore, getHours, format } from 'date-fns';
+import { isBefore, getHours } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import INotificationsRepository from '@modules/notfications/repositories/INotificationsRepository';
@@ -63,19 +63,19 @@ class CreateAppointmentService {
       user_id,
     });
 
-    const dateFormated = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
+    // const dateFormated = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
 
-    await this.notificationRepository.create({
-      recipient_id: provider_id,
-      content: `Você possui um novo agendamento para o dia ${dateFormated}`,
-    });
+    // await this.notificationRepository.create({
+    //   recipient_id: provider_id,
+    //   content: `Você possui um novo agendamento para o dia ${dateFormated}`,
+    // });
 
-    await this.cacheProvider.invalidate(
-      `providers-appointment:${provider_id}:${format(
-        appointmentDate,
-        'yyyy-M-d',
-      )}`,
-    );
+    // await this.cacheProvider.invalidate(
+    //   `providers-appointment:${provider_id}:${format(
+    //     appointmentDate,
+    //     'yyyy-M-d',
+    //   )}`,
+    // );
     return appointment;
   }
 }
