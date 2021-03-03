@@ -5,7 +5,7 @@ import multer, { StorageEngine } from 'multer';
 const tempFolder = path.resolve(__dirname, '..', '..', 'temp');
 
 interface IUploadConfig {
-  driver: 's3' | 'disk';
+  driver: 's3' | 'disk' | 'cloudinary';
 
   tempFolder: string;
   uploadFolder: string;
@@ -19,6 +19,7 @@ interface IUploadConfig {
     aws: {
       bucket: string;
     };
+    cloudinary: {};
   };
 }
 
@@ -45,5 +46,6 @@ export default {
     aws: {
       bucket: 'app-smartcon',
     },
+    cloudinary: {},
   },
 } as IUploadConfig;
