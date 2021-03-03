@@ -19,8 +19,8 @@ export default class CloudinaryStorageProvider implements IStorageProvider {
       originalPath,
       {
         transformation: {
-          width: 150,
-          height: 150,
+          width: 100,
+          height: 100,
           radius: 100,
         },
         folder: process.env.CLOUDINARY_FOLDER,
@@ -28,7 +28,7 @@ export default class CloudinaryStorageProvider implements IStorageProvider {
       },
       (err, result) => {
         if (err) {
-          throw new AppError('Couldnt upload photo');
+          throw new AppError(`Couldnt upload photo. Error: ${err.message}`);
         }
         filename = result?.url || '';
       },
