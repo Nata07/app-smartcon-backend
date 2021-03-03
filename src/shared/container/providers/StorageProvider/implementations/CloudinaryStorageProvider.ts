@@ -6,7 +6,7 @@ import IStorageProvider from '../models/IStorageProvider';
 
 export default class CloudinaryStorageProvider implements IStorageProvider {
   public async saveFile(file: string): Promise<string> {
-    cloudinary.v2.config({
+    await cloudinary.v2.config({
       cloud_name: process.env.CLOUDINARY_NAME,
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
@@ -19,8 +19,8 @@ export default class CloudinaryStorageProvider implements IStorageProvider {
       originalPath,
       {
         transformation: {
-          width: 100,
-          height: 100,
+          width: 200,
+          height: 200,
           radius: 100,
         },
         folder: process.env.CLOUDINARY_FOLDER,
@@ -40,13 +40,13 @@ export default class CloudinaryStorageProvider implements IStorageProvider {
   public async deleteFile(file: string): Promise<void> {
     const publicId = file.substring(63, file.length - 4);
 
-    cloudinary.v2.config({
+    await cloudinary.v2.config({
       cloud_name: process.env.CLOUDINARY_NAME,
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
     });
 
-    cloudinary.v2.api.delete_resources([publicId], (err, result) => {
+    await cloudinary.v2.api.delete_resources([publicId], (err, result) => {
       if (err) {
         throw new AppError('Couldnt delete photo');
       }

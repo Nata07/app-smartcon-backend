@@ -58,7 +58,7 @@ class User {
       case 'disk':
         return `${process.env.APP_API_URL}/files/${this.avatar}`;
       case 'cloudinary':
-        return `${this.avatar}`;
+        return `${process.env.APP_API_URL}/files/${this.avatar}`;
       default:
         return null;
     }
